@@ -100,9 +100,6 @@ Adapted from "Cellpose Prediction for 2D v0.5"
 - UMAP of PCA-reduced features to visualize morphological clustering
   - Silhouette score
 
-## Notes:
-download_data.py is fully written by ChatGPT. I wanted to see if I could connect the data from my Google Drive to my GitHub without directly needing to download the files because it is a large zip. However, if the code does not work according to plan, please use this link (https://drive.google.com/file/d/1s7N1JTEgNZ3UrBR2Kc3NPLPyBXZXYssB/view?usp=sharing) to access the zip file. You can only access the file through your LionMail account.
-
 ---
 ## References
 1. Chandrasekaran, S. N., Cimini, B. A., Goodale, A., Miller, L., Kost-Alimova, M., Jamali, N., Doench, J. G., et al. (2024). *Three million images and morphological profiles of cells treated with matched chemical and genetic perturbations*. **Nature Methods**, 21(6), 1114–1121. https://doi.org/10.1038/s41592-024-02241-6
