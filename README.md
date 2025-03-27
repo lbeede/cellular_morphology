@@ -20,6 +20,8 @@ also demonstrating the capability of interpretable pipelines for large-scale mor
 
 
 ---
+# CellMorph.ipynb
+The file is too large to view on GitHub. Please download it to follow this outline.
 
 ## 1. Image–Label Mapping
 
