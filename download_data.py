@@ -1,5 +1,3 @@
-! pip install gdown
-
 import os
 import gdown
 import zipfile
@@ -36,7 +34,7 @@ def main():
     # Define the path for the downloaded zip file
     zip_file_path = os.path.join(data_dir, "dataset.zip")
     
-    file_id = "1s7N1JTEgNZ3UrBR2Kc3NPLPyBXZXYssB"
+    file_id = "1CSE8i-0ICeb9g3Dro5fumqik-rai3x99"
     
     # Download the dataset only if it doesn't already exist
     if not os.path.exists(zip_file_path):
