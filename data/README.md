@@ -12,7 +12,7 @@ cd cellular_morphology
 Now we are in the repository directory.
 
 2. Run download_data.py
-```
+```bash
 python download_data.py
 ```
 
@@ -25,6 +25,9 @@ You now will have all the data from our project in cellular_morphology/data/cell
 - all_treatments.npy : all the treatments of the segmented images
 - metadata_BR00116991.csv : the images' corresponding metadata
 You can now run the corresponding notebooks!
+
+## Notes:
+download_data.py is fully written by ChatGPT. I wanted to see if I could connect the data from my Google Drive to my GitHub without directly needing to download the files because it is a large zip, and it successfully worked! However, if the code does not work according to plan, please use this link (https://drive.google.com/file/d/1s7N1JTEgNZ3UrBR2Kc3NPLPyBXZXYssB/view?usp=sharing) to access the zip file. You can only access the file through your LionMail account.
 
 # References
 Chandrasekaran, S. N. et al. (2024). Three million images and morphological profiles of cells treated with matched chemical and genetic perturbations. Nature Methods, 21(6), 1114–1121. https://doi.org/10.1038/s41592-024-02241-6
