@@ -39,9 +39,16 @@ These allow us to:
 
 ## 2. Data Preprocessing
 
-### 2.1 Segmentation
+### 2.1 Implementing Cellpose Algorithm
+Adapted from "Cellpose Prediction for 2D v0.5"
+- Used Cellpose to download and load the images
+  
+### 2.2 Segmentation
 - Used Cellpose to segment cells in 2867 `.tiff` images
 - Saved corresponding masks
+
+### 2.3 Concatenation
+- Matched each cell’s features to the drug treatment label of its parent image
 
 ---
 
@@ -49,10 +56,14 @@ These allow us to:
 
 ### 3.1 Morphological Feature Extraction
 - Applied a custom feature extraction function using `skimage.measure.regionprops` to each labeled cell region
-- Operated directly on full images and masks without cropping individual cells
 - Extracted features for each segmented cell, including:
   - Area, eccentricity, perimeter, solidity, mean intensity, orientation, etc.
-- Matched each cell’s features to the drug treatment label of its parent image
+#### 3.1.1 Using your own dataset?
+- Extract the features and treatments from your dataset
+#### 3.1.2 Loading provided dataset
+- Otherwise, use the data provided here
+#### 3.1.4 Cell count mask
+- To reduce runtime, we look at the top 20 treatments with the most segmented cell counts
 
 ### 3.2 Dimensionality Reduction
 - Applied PCA to reduce the 11-dimensional feature space to n principal components
@@ -60,32 +71,36 @@ These allow us to:
   - Noise reduction
   - Visualization (ie. UMAP)
   - Speeding up training
-
+#### 3.2.1 Scree plot
+- Find the number of principal components that explain 95% of the variance
+#### 3.2.2 Elbow method
+- Find the optimal number of clusters by finding the point where adding more clusters yields diminishing returns in explained variance
 ---
 
 ## 4. Train a Classifier
 
-### 4.1 Model Choice
-- Used Random Forest for its robustness and interpretability
-
-### 4.2 Training Pipeline
+### 4.1 Random Forest
+- Used for its robustness and interpretability
 - Stratified by treatment 80/20 train/test split
-- Explored subsets of top-20 most frequent treatments
+
+#### 4.1.1 All features/treatments
+- Ran into RAM issues both with and without PCA
+
+#### 4.1.2 Top 20 features/treatments
+- Only searched for the best number of estimators for without PCA and without DMSO
+  - Best practice should serach for the best number of estimators for each experiment
+- Ran experiments with with and witout PCA
 - Ran experiments both with and without DMSO, the control treatment
 ---
 
 ## 5. Evaluate and Visualize
-
-### 5.1 Metrics
 - Accuracy
-- Confusion matrix
-- Silhouette score for UMAP clustering
-
-### 5.2 Visualizations
 - Confusion matrix to show common misclassifications
-- UMAP of PCA-reduced features to visualize morphological clustering
 - Random Forest bar plots of feature importances 
+- UMAP of PCA-reduced features to visualize morphological clustering
+  - Silhouette score
 
 ---
 ## References
 1. Chandrasekaran, S. N., Cimini, B. A., Goodale, A., Miller, L., Kost-Alimova, M., Jamali, N., Doench, J. G., et al. (2024). *Three million images and morphological profiles of cells treated with matched chemical and genetic perturbations*. **Nature Methods**, 21(6), 1114–1121. https://doi.org/10.1038/s41592-024-02241-6
+2. Image-based Profiling with Cell Painting. 2024. Google Colaboratory notebook. Retrieved March 27, 2025, from https://colab.research.google.com/drive/1SDwTBwiS8qQO3kG4LDqNWxAn-TcUFzJ-#scrollTo=hG3LSmJmLylT
